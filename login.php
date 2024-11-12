@@ -21,8 +21,8 @@
         if (isset($_POST['submit'])) {
             session_start();
             include 'db.php';
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
+            $user = mysqli_real_escape_string($conn, $_POST['user']);
+            $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 
             $cek = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username = '" . $user . "' AND password = '" . MD5($pass) . "'");
 
