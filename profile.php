@@ -32,9 +32,16 @@ if ($_SESSION['status_login'] != true) {
     <!-- content -->
     <div class="section">
         <div class="container">
-            <h3>Dashboard</h3>
+            <h3>Profile</h3>
             <div class="box">
-                <h4>Selamat Datang <?php echo $_SESSION['a_global']->admin_name ?> di Toko Online!</h4>
+                <form action=" " method="POST">
+                    <input type="text" name="nama" placeholder="Nama Lengkap" class="input-control" required>
+                    <input type="text" name="user" placeholder="username" class="input-control" required>
+                    <input type="text" name="hp" placeholder="No HP" class="input-control" required>
+                    <input type="email" name="email" placeholder="Email" class="input-control" required>
+                    <input type="text" name="alamat" placeholder="Alamat" class="input-control" required>
+                    <input type="submit" name="submit" placeholder="Nama Lengkap">
+                </form>
             </div>
         </div>
     </div>
