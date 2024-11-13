@@ -68,12 +68,12 @@ $p = mysqli_fetch_object($produk);
                 <?php
                 if (isset($_POST['submit'])) {
                     // data inputan form
-                    $kategori = $_POST['kategori'];
-                    $nama = $_POST['nama'];
-                    $harga = $_POST['harga'];
-                    $deskripsi = $_POST['deskripsi'];
-                    $status = $_POST['status'];
-                    $foto = $_POST['foto'];
+                    $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
+                    $nama = mysqli_real_escape_string($conn, $_POST['nama']);
+                    $harga = mysqli_real_escape_string($conn, $_POST['harga']);
+                    $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
+                    $status = mysqli_real_escape_string($conn, $_POST['status']);
+                    $foto = mysqli_real_escape_string($conn, $_POST['foto']);
                     // data gambar baru
                     $filename = $_FILES['gambar']['name'];
                     $tmp_name = $_FILES['gambar']['tmp_name'];

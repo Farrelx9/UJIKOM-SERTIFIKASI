@@ -1,8 +1,33 @@
 <?php
+session_start(); // Start the session
+
 include 'db.php';
-$kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_addres FROM tb_admin
-WHERE admin_id =1");
-$a = mysqli_fetch_object($kontak);
+
+// Fungsi untuk mendapatkan data admin
+function getAdminData($conn)
+{
+    $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_addres FROM tb_admin WHERE admin_id = 1");
+    return mysqli_fetch_object($kontak);
+}
+
+// Ambil data admin
+$a = getAdminData($conn);
+
+// Fungsi untuk mendapatkan data pengguna
+function getUserData($conn, $userId)
+{
+    $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE user_id = $userId");
+    return mysqli_fetch_object($query);
+}
+
+// Misalkan Anda memiliki ID pengguna yang sedang login
+if (isset($_SESSION['user_id'])) { // Check if user_id is set
+    $userId = $_SESSION['user_id'];
+    $o = getUserData($conn, $userId);
+} else {
+    // Handle the case where the user is not logged in
+    $o = null; // or redirect to login page
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +47,14 @@ $a = mysqli_fetch_object($kontak);
             <h1><a href="index.php">HaloWin</a></h1>
             <ul>
                 <li><a href="produk.php">Produk</a></li>
-                <li><a href="keranjang.php">Keranjang</a></li>
-
+                <li>
+                    <?php
+                    // Tampilkan link berdasarkan status login
+                    echo (isset($_SESSION['status_login']) && $_SESSION['status_login'] == true) ?
+                        '<a href="profile-user.php"><img src="img/profile.svg" width="25px" alt="User Icon" class="user-icon"></a>' :
+                        '<a href="login-user.php">Login</a>';
+                    ?>
+                </li>
             </ul>
         </div>
     </header>

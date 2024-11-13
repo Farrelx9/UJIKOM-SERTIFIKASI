@@ -32,9 +32,9 @@ if ($_SESSION['status_login'] != true) {
     <!-- content -->
     <div class="section">
         <div class="container">
-            <h3>Dashboard</h3>
+            <h3>Dashboard Admin</h3>
             <div class="box">
-                <h4>Selamat Datang <?php echo $_SESSION['a_global']->admin_name ?> di Toko Online!</h4>
+                <h4>Selamat Datang <?php echo $_SESSION['a_global']->admin_name ?> di halaman admin!</h4>
             </div>
         </div>
     </div>
