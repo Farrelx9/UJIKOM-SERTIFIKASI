@@ -48,6 +48,9 @@ if ($result === false) {
 } else {
     "<p>Number of rows: " . $result->num_rows . "</p>";
 }
+
+$totalbelanja = 0; // Initialize totalbelanja before using it
+$_SESSION['total_price'] = $totalbelanja;
 ?>
 
 <!DOCTYPE html>
@@ -87,15 +90,16 @@ if ($result === false) {
                     $sql = "SELECT c.*, p.product_name FROM tb_cart c JOIN tb_product p ON c.product_id = p.product_id WHERE c.user_id = '$username'";
                     $result = $conn->query($sql);
 
+
                     if ($result === false) {
                         echo "<p>Error fetching cart items: " . $conn->error . "</p>";
                     } else {
-                        $totalBelanja = 0; // Inisialisasi total belanja
+                        $totalbelanja = 0; // Inisialisasi total belanja
                         echo "<p>Produk: " . $result->num_rows . "</p>";
                         if ($result->num_rows > 0) {
                             // Loop through all rows of data
                             while ($row = $result->fetch_assoc()) {
-                                $totalBelanja += $row['price'] * $row['total']; // Hitung total belanja
+                                $totalbelanja += $row['price'] * $row['total']; // Hitung total belanja
                                 echo "<div class='cart-table'>";
                                 echo "<table>"; // Menambahkan elemen tabel
                                 echo "<tr><th>User ID</th><td>" . $row['user_id'] . "</td></tr>";
@@ -111,7 +115,8 @@ if ($result === false) {
                                 echo "</table>"; // Menutup elemen tabel
                                 echo "</div>";
                             }
-                            echo "<p>Total Belanja: Rp " . number_format($totalBelanja, 2, ',', '.') . "</p>"; // Menampilkan total belanja
+                            $_SESSION['total_price'] = $totalbelanja; // Simpan total belanja di session
+                            echo "<p>Total Belanja: Rp " . number_format($totalbelanja, 2, ',', '.') . "</p>"; // Menampilkan total belanja
                         } else {
                             echo "<p>Your cart is empty.</p>";
                         }

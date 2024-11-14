@@ -48,6 +48,7 @@ if (isset($_SESSION['user_id'])) { // Check if user_id is set
             <ul>
                 <li><a href="produk.php">Produk</a></li>
                 <li><a href="keranjang-user.php">Keranjang</a></li>
+                <li><a href="registrasi-user.php">Registrasi</a></li>
                 <li>
                     <?php
                     // Tampilkan link berdasarkan status login

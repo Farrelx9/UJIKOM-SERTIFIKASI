@@ -49,7 +49,8 @@ if ($_SESSION['status_login'] != true) {
                     <input type="text" name="nama" class="input-control" placeholder="Nama Produk" required>
                     <input type="text" name="harga" class="input-control" placeholder="Harga" required>
                     <input type="file" name="gambar" class="input-control" required>
-                    <textarea class="input-control" name="deskripsi" placeholder="Deskripsi" id="deskripsi"></textarea><br>
+                    <textarea class="input-control" name="deskripsi" placeholder="Deskripsi"
+                        id="deskripsi"></textarea><br>
                     <select class="input-control" name="status">
                         <option value="">--Pilih--</option>
                         <option value="1">Aktif</option>
@@ -82,15 +83,13 @@ if ($_SESSION['status_login'] != true) {
                     } else {
                         move_uploaded_file($tmp_name, './produk/' . $newname);
 
-                        $insert = mysqli_query($conn, "INSERT INTO tb_product VALUES (
-                          null,
-                        '" . $kategori . "',
-                        '" . $nama . "',
-                        '" . $harga . "',
-                        '" . $deskripsi . "',
-                        '" . $newname . "',
-                        '" . $status . "',
-                        null
+                        $insert = mysqli_query($conn, "INSERT INTO tb_product (category_id, product_name, product_price, product_description, product_image, product_status) VALUES (
+                            '" . mysqli_real_escape_string($conn, $kategori) . "',
+                            '" . mysqli_real_escape_string($conn, $nama) . "',
+                            '" . mysqli_real_escape_string($conn, $harga) . "',
+                            '" . mysqli_real_escape_string($conn, $deskripsi) . "',
+                            '" . mysqli_real_escape_string($conn, $newname) . "',
+                            '" . mysqli_real_escape_string($conn, $status) . "'
                         )");
 
                         if ($insert) {

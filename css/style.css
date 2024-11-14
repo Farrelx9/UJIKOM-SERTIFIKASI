@@ -225,6 +225,91 @@ footer {
   border: none;
   cursor: pointer;
 }
+.summary {
+  width: 100%; /* Lebar tabel 100% */
+  border-collapse: collapse; /* Menghilangkan jarak antara border sel */
+  margin-top: 20px; /* Jarak atas untuk tabel */
+  margin-bottom: 10px;
+}
+
+.summary th,
+.summary td {
+  padding: 10px; /* Ruang dalam sel */
+  text-align: left; /* Rata kiri untuk teks */
+  border: 1px solid #ccc; /* Garis batas untuk sel */
+}
+
+.summary th {
+  background-color: #c70039; /* Warna latar belakang untuk header */
+  color: #fff; /* Warna teks untuk header */
+}
+
+.summary tr:nth-child(even) {
+  background-color: #f9f9f9; /* Warna latar belakang untuk baris genap */
+}
+
+.summary tr:hover {
+  background-color: #f1f1f1; /* Warna latar belakang saat hover */
+}
+.section-summary {
+  padding: 20px; /* Ruang dalam untuk bagian summary */
+  background-color: #f9f9f9; /* Warna latar belakang yang lembut */
+  border: 1px solid #ccc; /* Garis batas untuk pemisahan */
+  border-radius: 5px; /* Sudut yang membulat */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+}
+
+.section-summary h3 {
+  text-align: center; /* Rata tengah untuk judul */
+  color: #c70039; /* Warna judul */
+  margin-bottom: 15px; /* Jarak bawah untuk judul */
+}
+
+.section-summary p {
+  margin: 10px 0; /* Jarak atas dan bawah untuk paragraf */
+  line-height: 1.5; /* Jarak antar baris */
+  color: #333; /* Warna teks */
+}
+.box-summary {
+  border: 1px solid #ccc; /* Garis batas untuk kotak */
+  padding: 15px; /* Ruang dalam untuk konten */
+  background-color: #f9f9f9; /* Warna latar belakang yang lembut */
+  border-radius: 5px; /* Sudut yang membulat */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk efek hover */
+}
+
+.box-summary:hover {
+  transform: scale(1.02); /* Efek zoom saat hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam saat hover */
+}
+.button-summary {
+  text-align: center;
+  padding: 8px 15px;
+  background-color: #c70039;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.button-summary:hover {
+  transform: scale(1.02); /* Efek zoom saat hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam saat hover */
+}
+.cetak {
+  text-align: center;
+  padding: 8px 15px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.cetak input {
+  padding: 8px 15px;
+  background-color: #c70039;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   .container {
     width: 50%;
