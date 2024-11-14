@@ -57,10 +57,33 @@ $p = mysqli_fetch_object($produk);
                     <div class="product-details">
 
                         <!-- New Add to Cart Form -->
-                        <form action="keranjang.php" method="POST">
-                            <input type="number" name="quantity" value="1" min="1" style="width: 50px;">
-                            <input type="submit" name="add_to_cart" value="Tambah ke Keranjang">
+                        <form action="keranjang-user.php" method="POST" class="add-cart">
+                            <input type="hidden" name="product_id" value="<?php echo $p->product_id; ?>">
+                            <input type="number" name="quantity" value="1" min="1">
+                            <input type="submit" name="add_to_cart" value="Add to Cart">
                         </form>
+                        <?php
+                        session_start(); // Ensure session is started
+                        if (isset($_POST['add_to_cart'])) {
+                            $product_id = $_POST['product_id']; // Ambil ID produk dari form
+                            $quantity = $_POST['quantity']; // Ambil jumlah dari form
+                            $username = $_SESSION['username']; // Ambil username dari session
+
+                            // Check if username is set
+                            if (!isset($username)) {
+                                echo "User is not logged in.";
+                                exit;
+                            }
+
+                            // Insert ke dalam tb_cart
+                            $sql = "INSERT INTO tb_cart (username, product_id, total) VALUES ('$username', '$product_id', '$quantity')";
+                            if ($conn->query($sql) === TRUE) {
+                                echo "Product added to cart successfully.";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn); // Display error if query fails
+                            }
+                        }
+                        ?>
 
 
                     </div>
