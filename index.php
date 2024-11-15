@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id'])) { // Check if user_id is set
             <ul>
                 <li><a href="produk.php">Produk</a></li>
                 <li><a href="keranjang-user.php">Keranjang</a></li>
-                <li><a href="registrasi-user.php">Registrasi</a></li>
+                <?php echo (isset($_SESSION['status_login']) && $_SESSION['status_login'] == true) ? '' : '<li><a href="registrasi-user.php">Registrasi</a></li>'; ?>
                 <li>
                     <?php
                     // Tampilkan link berdasarkan status login
@@ -80,7 +80,7 @@ if (isset($_SESSION['user_id'])) { // Check if user_id is set
                 if (mysqli_num_rows($kategori) > 0) {
                     while ($k = mysqli_fetch_array($kategori)) {
 
-                ?>
+                        ?>
                         <a href="produk.php?kat=<?php echo $k['category_id'] ?>">
                             <div class="col-5">
                                 <img src="img/images.png" width="50px" style="margin-bottom: 5px;">
@@ -105,7 +105,7 @@ if (isset($_SESSION['user_id'])) { // Check if user_id is set
                     while ($p = mysqli_fetch_array($produk)) {
 
 
-                ?>
+                        ?>
                         <a href="detail-produk.php?id=<?php echo $p['product_id']; ?>">
                             <div class="col-4">
                                 <img src="produk/<?php echo $p['product_image'] ?>">

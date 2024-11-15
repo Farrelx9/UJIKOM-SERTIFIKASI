@@ -108,8 +108,8 @@ $result_transaction = $stmt_transaction->get_result();
                             </tr>
                         <?php endwhile; ?>
                     </table>
-                    <form method="POST" action="summary.php" class="cetak">
-                        <input type="submit" value="Cetak Bukti Transaksi">
+                    <form method="POST" action="summary.php">
+                        <input type="submit" value="Cetak Bukti Transaksi" class="button-summary">
                     </form>
                 <?php else: ?>
                     <p>Tidak ada transaksi yang ditemukan.</p>
